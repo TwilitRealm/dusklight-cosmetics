@@ -239,11 +239,23 @@ void add_group(
     }
 }
 
-ModResult build_hero_tunic_colors(ModContext*, UiElementHandle pane, void*, ModError*) {
-    svc_ui->pane_add_section(mod_ctx, pane, "Hero's Tunic");
-    add_cosmetic_option(pane, g_cvars.herosTunicCapColor, "Cap", kOverlayPresets);
-    add_cosmetic_option(pane, g_cvars.herosTunicTorsoColor, "Body", kOverlayPresets);
-    add_cosmetic_option(pane, g_cvars.herosTunicSkirtColor, "Skirt", kOverlayPresets);
+ModResult build_ordon_clothes_colors(ModContext*, UiElementHandle pane, void*, ModError*) {
+    svc_ui->pane_add_section(mod_ctx, pane, "Ordon Clothes");
+    add_cosmetic_option(pane, g_cvars.ordonClothesTopColor, "Top and Arm Wraps", kOverlayPresets);
+    add_cosmetic_option(pane, g_cvars.ordonClothesBaldricColor, "Baldric", kOverlayPresets);
+    add_cosmetic_option(pane, g_cvars.ordonClothesSkirtColor, "Skirt and Bottoms", kOverlayPresets);
+    return MOD_OK;
+}
+
+ModResult build_heros_clothes_colors(ModContext*, UiElementHandle pane, void*, ModError*) {
+    svc_ui->pane_add_section(mod_ctx, pane, "Hero's Clothes");
+    add_cosmetic_option(pane, g_cvars.herosClothesCapColor, "Cap", kOverlayPresets);
+    add_cosmetic_option(pane, g_cvars.herosClothesUndershirtColor, "Undershirt, Baldric, Belt and Pouch", kOverlayPresets);
+    add_cosmetic_option(pane, g_cvars.herosClothesChainMailColor, "Chain Mail", kOverlayPresets);
+    add_cosmetic_option(pane, g_cvars.herosClothesTopColor, "Top", kOverlayPresets);
+    add_cosmetic_option(pane, g_cvars.herosClothesSkirtColor, "Skirt", kOverlayPresets);
+    add_cosmetic_option(pane, g_cvars.herosClothesBottomsColor, "Bottoms", kOverlayPresets);
+    add_cosmetic_option(pane, g_cvars.herosClothesBootsColor, "Boots", kOverlayPresets);
     return MOD_OK;
 }
 
@@ -251,30 +263,58 @@ ModResult build_zora_armor_colors(ModContext*, UiElementHandle pane, void*, ModE
     svc_ui->pane_add_section(mod_ctx, pane, "Zora Armor");
     add_cosmetic_option(pane, g_cvars.zoraArmorCapColor, "Cap", kOverlayPresets);
     add_cosmetic_option(pane, g_cvars.zoraArmorHelmetColor, "Helmet", kOverlayPresets);
-    add_cosmetic_option(pane, g_cvars.zoraArmorTorsoColor, "Torso", kOverlayPresets);
-    add_cosmetic_option(pane, g_cvars.zoraArmorScalesColor, "Scales", kOverlayPresets);
+    add_cosmetic_option(pane, g_cvars.zoraArmorMaskColor, "Mask", kOverlayPresets);
+    add_cosmetic_option(pane, g_cvars.zoraArmorScalesColor, "Scales, Armlets and Bottoms", kOverlayPresets);
+    add_cosmetic_option(pane, g_cvars.zoraArmorPauldronsColor, "Pauldrons and Skirt", kOverlayPresets);
+    add_cosmetic_option(pane, g_cvars.zoraArmorBaldricColor, "Baldric and Pouch", kOverlayPresets);
     add_cosmetic_option(pane, g_cvars.zoraArmorFlippersColor, "Flippers", kOverlayPresets);
+    return MOD_OK;
+}
+
+ModResult build_magic_armor_colors(ModContext*, UiElementHandle pane, void*, ModError*) {
+    svc_ui->pane_add_section(mod_ctx, pane, "Magic Armor");
+    add_cosmetic_option(pane, g_cvars.magicArmorCapColor, "Cap", kOverlayPresets);
+    add_cosmetic_option(pane, g_cvars.magicArmorTiaraColor, "Tiara", kOverlayPresets);
+    add_cosmetic_option(pane, g_cvars.magicArmorChainMailColor, "Chain Mail and Bottoms", kOverlayPresets);
+    add_cosmetic_option(pane, g_cvars.magicArmorCuirassColor, "Cuirass and Spaulders", kOverlayPresets);
+    add_cosmetic_option(pane, g_cvars.magicArmorAccessoriesColor, "Accessories", kOverlayPresets);
+    add_cosmetic_option(pane, g_cvars.magicArmorBaldricColor, "Baldric, Pouch, Sleeves and Bracers", kOverlayPresets);
+    add_cosmetic_option(pane, g_cvars.magicArmorVambracesColor, "Vambraces", kOverlayPresets);
+    add_cosmetic_option(pane, g_cvars.magicArmorBootsColor, "Boots", kOverlayPresets);
     return MOD_OK;
 }
 
 ModResult build_sword_colors(ModContext*, UiElementHandle pane, void*, ModError*) {
     svc_ui->pane_add_section(mod_ctx, pane, "Swords");
     add_cosmetic_option(pane, g_cvars.woodenSwordColor, "Wooden Sword", kOverlayPresets);
-    add_cosmetic_option(pane, g_cvars.ordonSwordBladeColor, "Ordon Blade", kLightPresets);
-    add_cosmetic_option(pane, g_cvars.ordonSwordHandleColor, "Ordon Handle", kLightPresets);
-    add_cosmetic_option(pane, g_cvars.msBladeColor, "Master Sword Blade", kLightPresets);
-    add_cosmetic_option(pane, g_cvars.msHandleColor, "Master Sword Handle", kLightPresets);
-    add_cosmetic_option(
-        pane, g_cvars.lightSwordGlowColor, "Light Sword Glow", kRainbowLightPresets);
+    add_cosmetic_option(pane, g_cvars.ordonSwordBladeColor, "Ordon Sword Blade", kLightPresets);
+    add_cosmetic_option(pane, g_cvars.ordonSwordHandleColor, "Ordon Sword Handle", kLightPresets);
+    add_cosmetic_option(pane, g_cvars.ordonSwordScabbardColor, "Ordon Sword Scabbard", kLightPresets);
+    add_cosmetic_option(pane, g_cvars.masterSwordBladeColor, "Master Sword Blade", kLightPresets);
+    add_cosmetic_option(pane, g_cvars.masterSwordHandleColor, "Master Sword Handle", kLightPresets);
+    add_cosmetic_option(pane, g_cvars.masterSwordScabbardColor, "Master Sword Scabbard", kLightPresets);
+    add_cosmetic_option(pane, g_cvars.lightSwordGlowColor, "Light Sword Glow", kRainbowLightPresets);
+    return MOD_OK;
+}
+
+ModResult build_shield_colors(ModContext*, UiElementHandle pane, void*, ModError*) {
+    svc_ui->pane_add_section(mod_ctx, pane, "Shields");
+    add_cosmetic_option(pane, g_cvars.ordonShieldColor, "Ordon Shield", kOverlayPresets);
+    add_cosmetic_option(pane, g_cvars.woodenShieldColor, "Wooden Shield", kLightPresets);
+    add_cosmetic_option(pane, g_cvars.hylianShieldColor, "Hylian Shield", kLightPresets);
     return MOD_OK;
 }
 
 ModResult build_equipment_colors(ModContext*, UiElementHandle pane, void*, ModError*) {
     svc_ui->pane_add_section(mod_ctx, pane, "Equipment");
+    add_cosmetic_option(pane, g_cvars.lanternColor, "Lantern", kOverlayPresets);
     add_cosmetic_option(pane, g_cvars.lanternGlowColor, "Lantern Glow", kRainbowLightPresets);
-    add_cosmetic_option(pane, g_cvars.boomerangColor, "Gale Boomerang", kOverlayPresets);
+    add_cosmetic_option(pane, g_cvars.galeBoomerangColor, "Gale Boomerang", kOverlayPresets);
     add_cosmetic_option(pane, g_cvars.ironBootsColor, "Iron Boots", kOverlayPresets);
+    add_cosmetic_option(pane, g_cvars.bombsColor, "Bombs", kOverlayPresets);
+    add_cosmetic_option(pane, g_cvars.waterBombsColor, "Water Bombs", kOverlayPresets);
     add_cosmetic_option(pane, g_cvars.spinnerColor, "Spinner", kOverlayPresets);
+    add_cosmetic_option(pane, g_cvars.bomblingsColor, "Bomblings", kOverlayPresets);
     return MOD_OK;
 }
 
@@ -297,6 +337,9 @@ ModResult build_hud_colors(ModContext*, UiElementHandle pane, void*, ModError*) 
 ModResult build_link_colors(ModContext*, UiElementHandle pane, void*, ModError*) {
     svc_ui->pane_add_section(mod_ctx, pane, "Link");
     add_cosmetic_option(pane, g_cvars.linkHairColor, "Hair", kOverlayPresets);
+    add_cosmetic_option(pane, g_cvars.linkEarringsColor, "Earrings", kOverlayPresets);
+    add_cosmetic_option(pane, g_cvars.linkBracersColor, "Bracers", kOverlayPresets);
+    add_cosmetic_option(pane, g_cvars.linkVambraceColor, "Vambrace", kOverlayPresets);
     return MOD_OK;
 }
 
@@ -316,9 +359,12 @@ ModResult build_companion_colors(ModContext*, UiElementHandle pane, void*, ModEr
 ModResult build_equipment_colors_tab(
     ModContext*, UiWindowHandle, UiElementHandle left, UiElementHandle right, void*, ModError*) {
     svc_ui->pane_add_section(mod_ctx, left, "Color Groups");
-    add_group(left, right, "Hero's Tunic", build_hero_tunic_colors);
+    add_group(left, right, "Ordon Clothes", build_ordon_clothes_colors);
+    add_group(left, right, "Hero's Clothes", build_heros_clothes_colors);
     add_group(left, right, "Zora Armor", build_zora_armor_colors);
+    add_group(left, right, "Magic Armor", build_magic_armor_colors);
     add_group(left, right, "Swords", build_sword_colors);
+    add_group(left, right, "Shields", build_shield_colors);
     add_group(left, right, "Equipment", build_equipment_colors);
 
     return MOD_OK;
@@ -567,24 +613,50 @@ MOD_EXPORT ModResult mod_initialize(ModError* error) {
 
     ModResult result{};
 
-    REGISTER_COSMETIC_OPTION(herosTunicCapColor)
-    REGISTER_COSMETIC_OPTION(herosTunicTorsoColor)
-    REGISTER_COSMETIC_OPTION(herosTunicSkirtColor)
+    REGISTER_COSMETIC_OPTION(ordonClothesTopColor)
+    REGISTER_COSMETIC_OPTION(ordonClothesBaldricColor)
+    REGISTER_COSMETIC_OPTION(ordonClothesSkirtColor)
+    REGISTER_COSMETIC_OPTION(herosClothesCapColor)
+    REGISTER_COSMETIC_OPTION(herosClothesUndershirtColor)
+    REGISTER_COSMETIC_OPTION(herosClothesChainMailColor)
+    REGISTER_COSMETIC_OPTION(herosClothesTopColor)
+    REGISTER_COSMETIC_OPTION(herosClothesSkirtColor)
+    REGISTER_COSMETIC_OPTION(herosClothesBottomsColor)
+    REGISTER_COSMETIC_OPTION(herosClothesBootsColor)
     REGISTER_COSMETIC_OPTION(zoraArmorCapColor)
     REGISTER_COSMETIC_OPTION(zoraArmorHelmetColor)
-    REGISTER_COSMETIC_OPTION(zoraArmorTorsoColor)
+    REGISTER_COSMETIC_OPTION(zoraArmorMaskColor)
     REGISTER_COSMETIC_OPTION(zoraArmorScalesColor)
+    REGISTER_COSMETIC_OPTION(zoraArmorPauldronsColor)
+    REGISTER_COSMETIC_OPTION(zoraArmorBaldricColor)
     REGISTER_COSMETIC_OPTION(zoraArmorFlippersColor)
-    REGISTER_COSMETIC_OPTION(lanternGlowColor)
+    REGISTER_COSMETIC_OPTION(magicArmorCapColor)
+    REGISTER_COSMETIC_OPTION(magicArmorTiaraColor)
+    REGISTER_COSMETIC_OPTION(magicArmorChainMailColor)
+    REGISTER_COSMETIC_OPTION(magicArmorCuirassColor)
+    REGISTER_COSMETIC_OPTION(magicArmorAccessoriesColor)
+    REGISTER_COSMETIC_OPTION(magicArmorBaldricColor)
+    REGISTER_COSMETIC_OPTION(magicArmorVambracesColor)
+    REGISTER_COSMETIC_OPTION(magicArmorBootsColor)
     REGISTER_COSMETIC_OPTION(woodenSwordColor)
     REGISTER_COSMETIC_OPTION(ordonSwordBladeColor)
     REGISTER_COSMETIC_OPTION(ordonSwordHandleColor)
-    REGISTER_COSMETIC_OPTION(msBladeColor)
-    REGISTER_COSMETIC_OPTION(msHandleColor)
+    REGISTER_COSMETIC_OPTION(ordonSwordScabbardColor)
+    REGISTER_COSMETIC_OPTION(masterSwordBladeColor)
+    REGISTER_COSMETIC_OPTION(masterSwordHandleColor)
+    REGISTER_COSMETIC_OPTION(masterSwordScabbardColor)
     REGISTER_COSMETIC_OPTION(lightSwordGlowColor)
-    REGISTER_COSMETIC_OPTION(boomerangColor)
+    REGISTER_COSMETIC_OPTION(ordonShieldColor)
+    REGISTER_COSMETIC_OPTION(woodenShieldColor)
+    REGISTER_COSMETIC_OPTION(hylianShieldColor)
+    REGISTER_COSMETIC_OPTION(lanternColor)
+    REGISTER_COSMETIC_OPTION(lanternGlowColor)
+    REGISTER_COSMETIC_OPTION(galeBoomerangColor)
     REGISTER_COSMETIC_OPTION(ironBootsColor)
+    REGISTER_COSMETIC_OPTION(bombsColor)
+    REGISTER_COSMETIC_OPTION(waterBombsColor)
     REGISTER_COSMETIC_OPTION(spinnerColor)
+    REGISTER_COSMETIC_OPTION(bomblingsColor)
     REGISTER_COSMETIC_OPTION(aButtonColor)
     REGISTER_COSMETIC_OPTION(bButtonColor)
     REGISTER_COSMETIC_OPTION(xButtonColor)
@@ -604,6 +676,9 @@ MOD_EXPORT ModResult mod_initialize(ModError* error) {
 
     REGISTER_COSMETIC_OPTION(midnaChargeRingColor)
     REGISTER_COSMETIC_OPTION(linkHairColor)
+    REGISTER_COSMETIC_OPTION(linkEarringsColor)
+    REGISTER_COSMETIC_OPTION(linkBracersColor)
+    REGISTER_COSMETIC_OPTION(linkVambraceColor)
     REGISTER_COSMETIC_OPTION(wolfLinkColor)
     REGISTER_COSMETIC_OPTION(eponaColor)
 
